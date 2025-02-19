@@ -6,6 +6,5 @@ export interface Reservation {
     roomType: string;
     numberOfGuests: number;
     status: 'confirmed' | 'pending' | 'cancelled';
-    remarks?: string;
+    remarks: string;
   }
-  
