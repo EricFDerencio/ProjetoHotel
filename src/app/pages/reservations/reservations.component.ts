@@ -66,7 +66,6 @@ export class ReservationsComponent {
   getGuestById(id:string|number,element:string[]){
     this.guestService.getGuestById(id).subscribe({
       next: (value) => {
-      this.aux= value;
       console.log(this.aux);
       element[1]=this.aux[0].name;
       this.tableData[this.cont]=element;

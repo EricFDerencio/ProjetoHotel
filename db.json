@@ -6,6 +6,27 @@
       "email": "joao.silva@email.com",
       "phone": "(11) 99999-1234",
       "document": "123.456.789-00"
+    },
+    {
+      "id": "3",
+      "name": "Maria Oliveira",
+      "email": "maria.oliveira@example.com",
+      "phone": "(21) 99876-5432",
+      "document": "987.654.321-00"
+    },
+    {
+      "id": "4",
+      "name": "Carlos Souza",
+      "email": "carlos.souza@example.com",
+      "phone": "(31) 98765-4321",
+      "document": "456.789.123-10"
+    },
+    {
+      "id": "5",
+      "name": "Ana Paula",
+      "email": "ana.paula@example.com",
+      "phone": "(41) 99988-7766",
+      "document": "321.654.987-00"
     }
   ],
   "roomTypes": [
