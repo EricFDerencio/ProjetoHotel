@@ -64,44 +64,44 @@
   ],
   "reservations": [
     {
-      "id": "1",
+      "id": "269d",
       "guestId": "1",
-      "checkIn": "2025-03-01",
-      "checkOut": "2025-03-05",
-      "roomType": "Standard",
-      "numberOfGuests": 2,
-      "status": "Confirmada",
-      "remarks": "Reserva feita online."
-    },
-    {
-      "id": "3",
-      "guestId": "3",
-      "checkIn": "2025-02-10",
-      "checkOut": "2025-02-20",
-      "roomType": "Deluxe",
-      "numberOfGuests": 3,
-      "status": "Pendente",
-      "remarks": "Esperando o valor da reserva ser pago."
-    },
-    {
-      "id": "4",
-      "guestId": "4",
-      "checkIn": "2025-04-01",
-      "checkOut": "2025-04-07",
+      "checkIn": "2025-03-03",
+      "checkOut": "2025-03-31",
       "roomType": "Suite",
-      "numberOfGuests": 6,
-      "status": "Cancelada",
-      "remarks": "Cancelamento solicitado pelo hóspede."
+      "numberOfGuests": 3,
+      "status": "Confirmada",
+      "remarks": "Teste"
     },
     {
-      "id": "5",
-      "guestId": "5",
-      "checkIn": "2025-05-05",
-      "checkOut": "2025-05-10",
+      "id": "d883",
+      "guestId": "2",
+      "checkIn": "2025-03-03",
+      "checkOut": "2025-03-31",
       "roomType": "Suite",
       "numberOfGuests": 5,
       "status": "Confirmada",
-      "remarks": "Pedido de café da manhã especial."
+      "remarks": null
+    },
+    {
+      "id": "7bb6",
+      "guestId": "3",
+      "checkIn": "2025-03-03",
+      "checkOut": "2025-03-31",
+      "roomType": "Suite",
+      "numberOfGuests": 2,
+      "status": "Confirmada",
+      "remarks": null
+    },
+    {
+      "id": "9d42",
+      "guestId": "4",
+      "checkIn": "2025-04-03",
+      "checkOut": "2025-04-21",
+      "roomType": "Deluxe",
+      "numberOfGuests": 4,
+      "status": "Confirmada",
+      "remarks": ""
     }
   ]
 }

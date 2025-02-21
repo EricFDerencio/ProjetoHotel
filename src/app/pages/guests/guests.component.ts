@@ -71,8 +71,6 @@ export class GuestsComponent implements OnInit {
         guest.phone,
         guest.document
       ]);
-      console.log(this.tableData);
-      console.log(this.tableHeaders)
     });
   }
 

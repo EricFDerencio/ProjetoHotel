@@ -108,7 +108,7 @@ export class ReservationsComponent {
           new Date(res.checkOut) > new Date(reservationData.checkIn) &&
           new Date(res.checkIn) < new Date(reservationData.checkOut)
         );
-
+        console.log(existingReservations)
         if (existingReservations.length >= this.roomAvailability[reservationData.roomType as keyof typeof this.roomAvailability]) {
           alert('Não há disponibilidade para o tipo de quarto selecionado.');
           return;

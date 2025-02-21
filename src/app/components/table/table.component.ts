@@ -23,15 +23,18 @@ export class TableComponent {
     this.routerAtive = this.router.url.includes('/reservation');
   }
 
-  emitEvent() {
+  emitEvent(e:Event) {
+    e.stopPropagation();
     this.event.emit();
   }
-  emitRemoveEvent(id:string){
+  emitRemoveEvent(id:string, e:Event){
+    e.stopPropagation();
     console.log(id);
     this.removeEvent.emit(id);
   }
 
-  emitEditEvent(id:string){
+  emitEditEvent(id:string, e:Event){
+    e.stopPropagation();
     console.log("entrou no edit");
     this.editEvent.emit(id);
   }
