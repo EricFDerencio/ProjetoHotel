@@ -1,8 +1,9 @@
 import { Component, EventEmitter, input, Input, Output, output } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-table',
-  imports: [],
+  imports: [ RouterLink],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
@@ -12,8 +13,15 @@ export class TableComponent {
   @Output() event =  new EventEmitter<void>();
   @Output() removeEvent = new EventEmitter<string>();
   @Output() editEvent = new EventEmitter<string>();
+  routerAtive: boolean = false;
 
-  constructor() {}
+  constructor( private router:Router) {
+    this.checkActiveRoute();
+  }
+
+  checkActiveRoute() {
+    this.routerAtive = this.router.url.includes('/reservation');
+  }
 
   emitEvent() {
     this.event.emit();
@@ -28,3 +36,5 @@ export class TableComponent {
     this.editEvent.emit(id);
   }
 }
+
+

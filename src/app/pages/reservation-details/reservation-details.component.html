@@ -1,0 +1,63 @@
+<div class="container mx-auto p-6">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Detalhes da Reserva</h2>
+  
+    <!-- Se houver reservas, exibe a tabela -->
+    <div *ngIf="reservations.length > 0; else noReservations">
+      <table class="w-full border-collapse border border-gray-200 shadow-lg">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-300 px-4 py-2">ID</th>
+            <th class="border border-gray-300 px-4 py-2">Tipo de Quarto</th>
+            <th class="border border-gray-300 px-4 py-2">Check-in</th>
+            <th class="border border-gray-300 px-4 py-2">Check-out</th>
+            <th class="border border-gray-300 px-4 py-2">Hóspedes</th>
+            <th class="border border-gray-300 px-4 py-2">Status</th>
+            <th class="border border-gray-300 px-4 py-2">Observações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reservation of reservations" class="hover:bg-gray-50">
+            <td class="border border-gray-300 px-4 py-2 text-center">{{ reservation[0] }}</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">{{ reservation[1] }}</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">{{ reservation[2] }}</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">{{ reservation[3] }}</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">{{ reservation[4] }}</td>
+            <td class="border border-gray-300 px-4 py-2 text-center font-semibold" 
+                [ngClass]="{'text-green-600': reservation[5] === 'Confirmada', 'text-yellow-500': reservation[5] === 'Pendente', 'text-red-500': reservation[5] === 'Cancelada'}">
+              {{ reservation[5] }}
+            </td>
+            <td class="border border-gray-300 px-4 py-2 text-center">{{ reservation[6] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Caso não haja reservas -->
+    <ng-template #noReservations>
+      <p class="text-center text-gray-500">Nenhuma reserva encontrada para este hóspede.</p>
+    </ng-template>
+  
+    <!-- Se houver tipos de quarto, exibe a tabela -->
+    <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Tipos de Quartos Disponíveis</h2>
+    <table class="w-full border-collapse border border-gray-200 shadow-lg">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="border border-gray-300 px-4 py-2">Tipo</th>
+          <th class="border border-gray-300 px-4 py-2">Descrição</th>
+          <th class="border border-gray-300 px-4 py-2">Preço por Noite</th>
+          <th class="border border-gray-300 px-4 py-2">Quartos Disponíveis</th>
+          <th class="border border-gray-300 px-4 py-2">Capacidade Máxima</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of roomTypes" class="hover:bg-gray-50">
+          <td class="border border-gray-300 px-4 py-2 text-center font-bold">{{ room.type }}</td>
+          <td class="border border-gray-300 px-4 py-2 text-center">{{ room.description }}</td>
+          <td class="border border-gray-300 px-4 py-2 text-center font-semibold text-blue-500">R$ {{ room.pricePerNight }}</td>
+          <td class="border border-gray-300 px-4 py-2 text-center">{{ room.availableRooms }}</td>
+          <td class="border border-gray-300 px-4 py-2 text-center">{{ room.maxGuests }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

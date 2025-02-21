@@ -8,32 +8,27 @@ import { Reservation } from '../models/reservation.model';
 })
 export class ReservationService {
 
-  private url = 'http://localhost:3000';
+  private url = 'http://localhost:3000/reservations';
   
-    constructor(private http: HttpClient) { }
-  
-    public getReservations(): Observable<Reservation[]> {
-  
-      return this.http.get<Reservation[]>(`${this.url}/reservations`);
-    }
-    public getReservationById(id:string|number): Observable<Reservation[]> {
-      const params = new HttpParams().set('id', id.toString());
-      return this.http.get<Reservation[]>(`${this.url}/reservations`, {params});
-    }
-  
-    public updateReservation(Reservation:Reservation ): Observable<Reservation[]> {
-      const params = new HttpParams().set('id', Reservation.id.toString());
-  
-      return this.http.put<Reservation[]>(`${this.url}/reservations`+ params,Reservation);
-    }
-  
-    public removeReservation(id:string|number): Observable<Reservation[]> {
-      const params = new HttpParams().set('id',id.toString());
-      return this.http.delete<Reservation[]>(`${this.url}/reservations`,{params});
-    }
-  
-    // This method sends a new Reservation's data to the server
-    public addReservation(Reservation: { name: string; email: string; phone: string; document: string; }): Observable<void> {
-      return this.http.post<void>(`${this.url}/reservations`, { ...Reservation });
-    }
+  constructor(private http: HttpClient) {}
+
+  public getReservations(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(this.url);
+  }
+
+  public getReservationById(id: string | number): Observable<Reservation> {
+    return this.http.get<Reservation>(`${this.url}/${id}`);
+  }
+
+  public addReservation(reservation: Reservation): Observable<Reservation> {
+    return this.http.post<Reservation>(this.url, reservation);
+  }
+
+  public updateReservation(reservation: Reservation): Observable<Reservation> {
+    return this.http.put<Reservation>(`${this.url}/${reservation.id}`, reservation);
+  }
+
+  public removeReservation(id: string | number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${id}`);
+  }
 }

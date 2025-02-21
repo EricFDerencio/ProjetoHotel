@@ -8,6 +8,13 @@
       "document": "123.456.789-00"
     },
     {
+      "id": "2",
+      "name": "Fernanda Lima",
+      "email": "fernanda.lima@example.com",
+      "phone": "(21) 99888-7766",
+      "document": "234.567.890-11"
+    },
+    {
       "id": "3",
       "name": "Maria Oliveira",
       "email": "maria.oliveira@example.com",
@@ -25,7 +32,7 @@
       "id": "5",
       "name": "Ana Paula",
       "email": "ana.paula@example.com",
-      "phone": "(41) 99988-7766",
+      "phone": "(41) 99988-7768",
       "document": "321.654.987-00"
     }
   ],
@@ -34,41 +41,67 @@
       "type": "Standard",
       "description": "Quarto simples com cama de casal e banheiro privativo.",
       "pricePerNight": 150,
-      "id": "95dc"
+      "id": "95dc",
+      "availableRooms": 10,
+      "maxGuests": 2
     },
     {
       "type": "Deluxe",
       "description": "Quarto espaçoso com vista para a cidade e comodidades extras.",
       "pricePerNight": 250,
-      "id": "c5cb"
+      "id": "c5cb",
+      "availableRooms": 5,
+      "maxGuests": 4
     },
     {
       "type": "Suite",
       "description": "Quarto de luxo com sala de estar, banheira e serviço de quarto 24h.",
       "pricePerNight": 400,
-      "id": "7828"
+      "id": "7828",
+      "availableRooms": 3,
+      "maxGuests": 6
     }
   ],
   "reservations": [
     {
       "id": "1",
-      "guestId": 1,
+      "guestId": "1",
       "checkIn": "2025-03-01",
       "checkOut": "2025-03-05",
       "roomType": "Standard",
       "numberOfGuests": 2,
-      "status": "confirmed",
+      "status": "Confirmada",
       "remarks": "Reserva feita online."
     },
     {
-      "id": "2",
-      "guestId": 2,
-      "checkIn": "2025-03-10",
-      "checkOut": "2025-03-15",
+      "id": "3",
+      "guestId": "3",
+      "checkIn": "2025-02-10",
+      "checkOut": "2025-02-20",
       "roomType": "Deluxe",
-      "numberOfGuests": 1,
-      "status": "pending",
-      "remarks": "Aguardando confirmação de pagamento."
+      "numberOfGuests": 3,
+      "status": "Pendente",
+      "remarks": "Esperando o valor da reserva ser pago."
+    },
+    {
+      "id": "4",
+      "guestId": "4",
+      "checkIn": "2025-04-01",
+      "checkOut": "2025-04-07",
+      "roomType": "Suite",
+      "numberOfGuests": 6,
+      "status": "Cancelada",
+      "remarks": "Cancelamento solicitado pelo hóspede."
+    },
+    {
+      "id": "5",
+      "guestId": "5",
+      "checkIn": "2025-05-05",
+      "checkOut": "2025-05-10",
+      "roomType": "Suite",
+      "numberOfGuests": 5,
+      "status": "Confirmada",
+      "remarks": "Pedido de café da manhã especial."
     }
   ]
 }

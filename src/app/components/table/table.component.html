@@ -1,5 +1,5 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left  text-gray-500 dark:text-gray-400">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 @for(columnTitle of tableHeaders; track $index) {
@@ -7,28 +7,29 @@
                         {{ columnTitle }}
                     </th>
                 }
-                <th scope="col" class="px-6 py-3">
-                   
+                <th scope="col" class="px-6 py-3"></th>
+                <th scope="col" class="px-6 py-3 text-center" colspan="2">
+                    <button (click)="emitEvent()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Adicionar</button>
                 </th>
-                <th scope="col" class="px-6 py-3 text-center col-span-2">
-                   <button (click)="emitEvent()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Adicionar</button>
-                </th>
-    
             </tr>
         </thead>
         <tbody>
             @for(rowData of tableData; track $index) {
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr 
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+                    [routerLink]="routerAtive ? [ rowData[$index][0]] : []"
+                    [class.cursor-pointer]="routerAtive">
+                    
                     @for(cellData of rowData; track $index) {
-                        <th scope="row" class="px-6 py-4 text-center">
+                        <td class="px-6 py-4 text-center">  <!-- Alterado de <th> para <td> -->
                             {{ cellData }}
-                        </th>
+                        </td>
                     }
                     <td class="ps-3 py-4 text-center">
                         <button (click)="emitEditEvent(rowData[0])" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Edit</button>
                     </td>
                     <td class="pe-3 py-4 text-center">
-                        <button (click)="emitRemoveEvent(rowData[0])" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">remove</button>
+                        <button (click)="emitRemoveEvent(rowData[0])" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Remove</button>
                     </td>
                 </tr>
             }

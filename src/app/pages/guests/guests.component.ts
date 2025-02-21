@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { GuestService } from '../../services/guest.service';
 import { TableComponent } from "../../components/table/table.component";
 import { CommonModule } from '@angular/common';
+import { Guest } from '../../models/guest.model';
 
 @Component({
   selector: 'app-guests',
@@ -16,7 +17,7 @@ export class GuestsComponent implements OnInit {
   isModalOpen: boolean = false;
   guestForm: FormGroup;
   isEdit: boolean = false;
-  currentGuestId: string | null = null; // Armazena o ID do hóspede para edição
+  currentGuestId: string | null = null;
 
   constructor(private guestService: GuestService) {
     this.guestForm = new FormGroup({
@@ -36,11 +37,28 @@ export class GuestsComponent implements OnInit {
       console.log('Formulário inválido:', this.guestForm.errors);
       return;
     }
-    if (this.isEdit && this.currentGuestId) {
-      this.updateGuest();
-    } else {
-      this.addGuest();
-    }
+
+    const guestData: Guest = this.guestForm.value;
+
+    this.guestService.getGuests().subscribe(guests => {
+      const emailExists = guests.some(g => g.email === guestData.email && g.id !== this.currentGuestId);
+      const documentExists = guests.some(g => g.document === guestData.document && g.id !== this.currentGuestId);
+
+      if (emailExists) {
+        alert('Este e-mail já está em uso.');
+        return;
+      }
+      if (documentExists) {
+        alert('Este documento já está em uso.');
+        return;
+      }
+
+      if (this.isEdit && this.currentGuestId) {
+        this.updateGuest();
+      } else {
+        this.addGuest();
+      }
+    });
   }
 
   getGuests() {
@@ -66,9 +84,11 @@ export class GuestsComponent implements OnInit {
   }
 
   removeGuest(id: string) {
-    this.guestService.removeGuest(id).subscribe(() => {
-      this.getGuests();
-    });
+    if (confirm('Tem certeza que deseja excluir esta reserva?')) {
+      this.guestService.removeGuest(id).subscribe(() => {
+        this.getGuests();
+      });
+    }
   }
 
   editGuest(id: string) {
